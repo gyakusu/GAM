@@ -1,0 +1,10 @@
+favorite,L [h] (est.),T [Nm] (est.),Bearing,type,d [mm],D [mm],W [mm],Limiting [rpm],Recommendation,Sales_volume
+False,50000,0.01,1200ETN,Ball,10,30,9,26000,10,1000
+False,40000,0.01,16100-2Z,Ball,10,28,8,25000,10,1000
+False,60000,0.02,2200ETN9,DualBall,10,30,14,32000,10,100
+False,70000,0.02,305800C-2Z,Cylindrical,10,32,14,22000,8,200
+False,70000,0.02,BK1010,Needle,10,14,10,22000,5,100
+
+
+
+
