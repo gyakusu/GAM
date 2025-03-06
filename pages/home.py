@@ -4,10 +4,12 @@ import streamlit as st
 import pandas as pd
 import seaborn as sns
 import plotly.express as px
+import numpy as np
 
 data_df = pd.read_csv('data/bearings.csv')
 show_df = data_df.copy()
 def get_colors(n): return sns.color_palette("husl", n).as_hex()
+def make_random(n): return 1 + 0.1 * np.random.randn(n)
 
 # In[0]:
 
@@ -21,15 +23,19 @@ radio_buttonL = left_column.radio('Choose your application', [
     None, 'Automotive', 'Machine tools', 'Wind turbine'])
 
 if radio_buttonL:
+    show_df['Recommendation'] *= make_random(len(show_df))
     if radio_buttonL == 'Automotive':
+        show_df['Recommendation'] *= make_random(len(show_df))
         left_column.radio('Choose your Automotive', [
             'Gear Box', 'Engine', 'Wheel'])
 
     elif radio_buttonL == 'Machine tools':
+        show_df['Recommendation'] *= make_random(len(show_df))
         left_column.radio('Choose your Machine tools', [
             'Lathe', 'Milling machine', 'Grinding machine'])
 
     else:
+        show_df['Recommendation'] *= make_random(len(show_df))
         left_column.radio('Choose your Wind turbine',
                           ['Gear Box', 'Generator'])
 
@@ -54,10 +60,8 @@ if buttonM:
 
     st.session_state.radio_buttonM1 = another_type[0]  # 初期値を設定
 
-radio_buttonM1 = middle_column.radio(
-    f'Choose remaining dimension', another_type, key='radio_buttonM1')
-
-if radio_buttonM1:
+    radio_buttonM1 = middle_column.radio(
+        f'Choose remaining dimension', another_type, key='radio_buttonM1')
 
     if radio_buttonM1 == another_type[0]:
         radio_buttonM2 = middle_column.radio(f'set {another_type[0]}', [
@@ -76,6 +80,9 @@ if radio_buttonM1:
             f'Set {another_type[1]}', key='buttonM2')
 
 textR = right_column.text_input('Rotational speed [r/min]', '1000')
+if textR:
+    show_df['Recommendation'] *= make_random(len(show_df))
+
 
 st.subheader('You might like this')
 st.write('Service Life, L [h] and Torque, T [Nm] are estimated by NSK-AI.')
