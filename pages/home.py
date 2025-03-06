@@ -124,7 +124,7 @@ with fig_col2:
 col1, col2 = st.columns(2)
 
 with col1:
-    if st.button('Calculate Operation'):
+    if st.button('Calculate Operating'):
         st.switch_page('calc.py')
 
 with col2:
